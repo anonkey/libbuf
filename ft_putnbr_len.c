@@ -6,7 +6,7 @@
 /*   By: tseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/09/29 20:29:24 by tseguier          #+#    #+#             */
-/*   Updated: 2014/09/29 20:46:59 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/01 00:50:02 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int			ft_putnbr_len(long long nbr, int sign, int width, char fill)
 	*act-- = '\0';
 	if (nbr < 0 || sign)
 	{
+		sign= nbr < 0 ? '-' : '+';
 		++size;
-		sign = nbr < 0 ? '-' : '+';
 		nbr = nbr > 0 ? nbr : 0 - nbr;
 	}
 	while (nbr >= 10)
@@ -34,9 +34,9 @@ int			ft_putnbr_len(long long nbr, int sign, int width, char fill)
 		++size;
 	}
 	*act = '0' + nbr;
-	if (sign)
-		*--act = sign;
-	while (++size <= width)
+	while (++size <= width + 1)
 		*--act = fill;
+	if (sign)
+		*--act = (char)sign;
 	return (ft_putstr(act));
 }

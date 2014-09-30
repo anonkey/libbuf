@@ -6,7 +6,7 @@
 /*   By: tseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/09/29 20:53:29 by tseguier          #+#    #+#             */
-/*   Updated: 2014/10/01 00:01:52 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/01 00:51:00 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ int				ft_putldouble_sci(long double nb, int prec)
 	if (prec > 0)
 		size += ft_printradix(nb, prec, mask);
 	size += ft_putchar('e');
-	size += ft_putnbr_len(pow, 1, 3, '0');
+	size += ft_putnbr_len(pow, 1, 2, '0');
 	return (size);
 }
