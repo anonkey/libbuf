@@ -5,21 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/07/01 19:04:44 by tseguier          #+#    #+#             */
-/*   Updated: 2014/09/25 22:33:40 by tseguier         ###   ########.fr       */
+/*   Created: 2014/09/29 19:10:45 by tseguier          #+#    #+#             */
+/*   Updated: 2014/10/01 00:31:10 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "headers/libft.h"
+#include <stdio.h>
+#include "ft_printf.h"
 
 int		main(void)
 {
-	ft_putdouble(-3.1213442331, 6, 1);
-	ft_putdouble(3.12, 5, 0);
-	ft_putdouble(-46578983.42331, 8, 0);
-	ft_putdouble(897567687983.1213442331, 20, 1);
-	ft_putdouble(-67890863.1213442331, 1, 1);
-	ft_putdouble(123498576783.1213442331, 0, 0);
-	return (1);
+	long	a;
+	size_t	toto;
+
+	toto = 203032;
+	a = 1000000;
+	printf(" \n A%dA", ft_printf("\n%+hhdtoto |%10.4s| %c%% %012lx  %012lo  %lu %+10.10zd  %6.6zx %p %f %+.4f %e.i\n", (signed char)'3', "Bonjour\n",'@', a, a, a,toto,toto, (void *)0x100UL, 12.42, 1.11111111, 3.14127));
+	printf(" \n A%dA", printf("\n%+hhdtoto |%10.4s| %c%% %012lx  %012lo  %lu %+10.10zd  %6.6zx %p %f %+.4f %e.i\n", (signed char)'3', "Bonjour\n",'@', a, a, a,toto,toto, (void *)0x100UL, 12.42, 1.111111111, 3.14127));
+	ft_printf("\n %p \n", NULL);
+	printf("\n %p \n", NULL);
+	return (0);
 }
