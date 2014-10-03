@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: tseguier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2014/10/01 01:38:12 by tseguier          #+#    #+#              #
-#    Updated: 2014/10/01 01:38:29 by tseguier         ###   ########.fr        #
+#    Created: 2014/10/03 14:36:54 by tseguier          #+#    #+#              #
+#    Updated: 2014/10/03 14:36:56 by tseguier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,18 @@ else
 	CFLAGS = -Wall -Wextra -Werror
 endif
 LDFLAGS = rc
-NAME = libbuf.a
+NAME = libft.a
 SRC = ft_atoi.c \
 ft_atoi_base.c \
 ft_btree.c \
 ft_btree_put.c \
 ft_bzero.c \
+ft_dynstr.c \
+ft_dynstradd.c \
+ft_dynstrdel.c \
+ft_dynstrflush.c \
+ft_dynstrnew.c \
+ft_dynstrput.c \
 ft_getchar.c \
 ft_isalnum.c \
 ft_isalpha.c \
@@ -47,6 +53,7 @@ ft_ldcdpop_back.c \
 ft_ldcdpop_front.c \
 ft_ldcdpush_back.c \
 ft_ldcdpush_front.c \
+ft_ldcdpush_sorted.c \
 ft_ldcdsize.c \
 ft_ldcdsize_ref.c \
 ft_lstadd.c \
@@ -124,6 +131,7 @@ ft_strtrim.c \
 ft_tolower.c \
 ft_toupper.c \
 get_next_line.c \
+main.c \
 printf/ft_printf.c \
 printf/ft_printfn.c \
 printf/ft_readarg.c \

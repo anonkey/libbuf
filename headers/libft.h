@@ -6,7 +6,7 @@
 /*   By: tseguier <tseguier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 19:21:16 by tseguier          #+#    #+#             */
-/*   Updated: 2014/09/29 20:23:39 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/03 14:35:52 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "ft_ldcd_cell.h"
 # include "ft_btree.h"
 # include "libft_struct.h"
+# include "ft_dynstr.h"
 # define BUFF_SIZE 100000
 # define MAX_LLSIZE 64
 # define MAX_ULLSIZE MAX_LLSIZE
@@ -27,6 +28,8 @@
 /*
 ** Affichage
 */
+int			ft_printf(char *format, ...)
+			__attribute__((format(printf, 1, 2)));
 void		*ft_print_memory(void *addr, unsigned int size);
 int			ft_putnbrhex(unsigned long long nb, unsigned int len, int maj);
 int			ft_putnbr_oct(unsigned long long nb, unsigned int len);
@@ -173,6 +176,8 @@ size_t		ft_ldcdat(t_ldcd ldcd, const void **at, unsigned int i);
 void		ft_ldcddel_head(t_ldcd ldcd);
 void		ft_ldcddel_tail(t_ldcd ldcd);
 char		**ft_lsttotab(t_ldcd l);
+int		ft_ldcdpush_sorted(t_ldcd ldcd, void *elem, size_t elem_size,
+							int (*cmp)(void *, void *));
 /*
 ** Files
 */
