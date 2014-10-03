@@ -6,7 +6,7 @@
 /*   By: tseguier <tseguier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 19:21:16 by tseguier          #+#    #+#             */
-/*   Updated: 2014/10/03 14:35:52 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/03 15:48:54 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int			ft_putnbr_ll(long long nbr, int sign);
 int			ft_putnbr_len(long long nbr, int sign, int width, char fill);
 int			ft_putnbr_ull(unsigned long long nbr);
 int			ft_putnbr_ulen(unsigned long long nbr, int width, char fill);
-int			ft_putstr_len(char const *s, unsigned long len, unsigned long max,
-							char fill);
+int		ft_putstr_len(char const *s, unsigned long len,
+						unsigned long width, char fill);
 int			ft_putdouble(double nb, int prec, int sign);
 int			ft_putldouble(long double nb, int prec, int sign);
 int			ft_putdouble_sci(double nb, int prec);

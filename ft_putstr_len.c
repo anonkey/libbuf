@@ -6,7 +6,7 @@
 /*   By: tseguier <tseguier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/25 16:50:31 by tseguier          #+#    #+#             */
-/*   Updated: 2014/09/29 20:44:17 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/03 15:47:15 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int		ft_putstr_len(char const *s, unsigned long len,
 	if (!s)
 		return (write(1, "(NULL)", 6 > len ? len : 6));
 	size = ft_strlen(s);
-	size = size > len ? len : size;
+	if (len > 0)
+		size = size > len ? len : size;
 	if (size < width)
 	{
 		while (size + i++ < width)
