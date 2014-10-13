@@ -6,7 +6,7 @@
 /*   By: tseguier <tseguier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 19:21:16 by tseguier          #+#    #+#             */
-/*   Updated: 2014/10/13 13:09:25 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/13 22:01:31 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@
 /*
 ** Affichage
 */
-int			ft_printf(char *format, ...);
+int			ft_printf(char *format, ...)
+			__attribute__((format(printf, 1, 2)));
 void		*ft_print_memory(void *addr, unsigned int size);
 int			ft_putnbrhex(unsigned long long nb, unsigned int len, int maj);
 int			ft_putnbr_oct(unsigned long long nb, unsigned int len);

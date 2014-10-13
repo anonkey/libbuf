@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_dynstrdel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tseguier <tseguier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/22 04:12:18 by tseguier          #+#    #+#             */
-/*   Updated: 2014/10/01 05:37:47 by tseguier         ###   ########.fr       */
+/*   Created: 2014/10/03 14:22:36 by tseguier          #+#    #+#             */
+/*   Updated: 2014/10/03 14:31:55 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strcmp(const char *s1, const char *s2)
-{
-	int		i;
+#include "ft_dynstr.h"
 
-	i = 0;
-	if (!s1 || !s2)
-		return (-1);
-	while (*(s1 + i) == *(s2 + i) && *(s1 + i))
-		++i;
-	return ((int)(*(s1 + i) - *(s2 + i)));
+void	ft_dynstrdel(t_dynstr *dstr_p)
+{
+	char	*str;
+
+	while (ft_ldcdsize((*dstr_p)->bufflist) > 0)
+	{
+		str = ft_ldcdpop_back((*dstr_p)->bufflist);
+		ft_strdel(&str);
+	}
+	ft_memdel((void **)dstr_p);
 }

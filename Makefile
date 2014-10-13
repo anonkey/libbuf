@@ -1,8 +1,20 @@
-ifeq ($(GCC), 1)
-    CC = gcc
-else
-    CC = llvm-gcc
-endif
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile.dep                                       :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tseguier <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2014/10/03 14:36:54 by tseguier          #+#    #+#              #
+#    Updated: 2014/10/13 22:02:26 by tseguier         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+
+
+HEADERS = headers/
+SRCDIR = srcs/
+CC = clang
 ifeq ($(DEBUG), 1)
     CFLAGS = -Wall -Wextra -Werror -ggdb3
 else
