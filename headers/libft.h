@@ -6,7 +6,7 @@
 /*   By: tseguier <tseguier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 19:21:16 by tseguier          #+#    #+#             */
-/*   Updated: 2014/09/29 20:23:39 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/13 13:09:25 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "ft_ldcd_cell.h"
 # include "ft_btree.h"
 # include "libft_struct.h"
+# include "ft_dynstr.h"
 # define BUFF_SIZE 100000
 # define MAX_LLSIZE 64
 # define MAX_ULLSIZE MAX_LLSIZE
@@ -27,6 +28,7 @@
 /*
 ** Affichage
 */
+int			ft_printf(char *format, ...);
 void		*ft_print_memory(void *addr, unsigned int size);
 int			ft_putnbrhex(unsigned long long nb, unsigned int len, int maj);
 int			ft_putnbr_oct(unsigned long long nb, unsigned int len);
@@ -43,12 +45,13 @@ int			ft_putnbr_ll(long long nbr, int sign);
 int			ft_putnbr_len(long long nbr, int sign, int width, char fill);
 int			ft_putnbr_ull(unsigned long long nbr);
 int			ft_putnbr_ulen(unsigned long long nbr, int width, char fill);
-int			ft_putstr_len(char const *s, unsigned long len, unsigned long max,
-							char fill);
+int			ft_putstr_len(char const *s, unsigned long len,
+							unsigned long width, char fill);
 int			ft_putdouble(double nb, int prec, int sign);
 int			ft_putldouble(long double nb, int prec, int sign);
 int			ft_putdouble_sci(double nb, int prec);
 int			ft_putldouble_sci(long double nb, int prec);
+int			ft_putldcd(t_ldcd ldcd, int (*put)(void *));
 
 /*
 ** Memory
@@ -90,18 +93,18 @@ char		*ft_strmjoin(int nbstr, ...);
 char		*ft_strmjoinclean(int nbstr, ...);
 
 /*
-** 		Destruction, reset, len
+**		Destruction, reset, len
 */
 void		ft_strdel(char **as);
 void		ft_strclr(char *s);
 size_t		ft_strlen(const char *str);
 /*
-** 		Copy
+**		Copy
 */
 char		*ft_strcpy(char *dest, const char *src);
 char		*ft_strncpy(char *dest, const char *src, size_t n);
 /*
-** 		Modification
+**		Modification
 */
 char		*ft_strcat(char *s1, const char *s2);
 char		*ft_strncat(char *dest, const char *src, size_t n);
@@ -111,7 +114,7 @@ int			ft_strcsub(char **dst, char *src, unsigned int start, char end);
 int			ft_strsepjoin(char **dir, char *name, char *sep);
 int			ft_strrev(char *str);
 /*
-** 		Search
+**		Search
 */
 char		*ft_strchr(const char *s, int c);
 char		*ft_strrchr(const char *s, int c);
@@ -120,14 +123,14 @@ char		*ft_strnstr(const char *s1, const char *s2, size_t n);
 int			ft_strchind(const char *str, char c);
 size_t		ft_strrchind(const char *str, char c);
 /*
-** 		Compare
+**		Compare
 */
 int			ft_strcmp(const char *s1, const char *s2);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_strequ(char const *s1, char const *s2);
 int			ft_strnequ(char const *s1, char const *s2, size_t n);
 /*
-** 		Char accessors
+**		Char accessors
 */
 void		ft_striter(char *s, void (*f)(char *));
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
@@ -173,6 +176,8 @@ size_t		ft_ldcdat(t_ldcd ldcd, const void **at, unsigned int i);
 void		ft_ldcddel_head(t_ldcd ldcd);
 void		ft_ldcddel_tail(t_ldcd ldcd);
 char		**ft_lsttotab(t_ldcd l);
+int			ft_ldcdpush_sorted(t_ldcd ldcd, void *elem, size_t elem_size,
+								int (*cmp)(void *, void *));
 /*
 ** Files
 */

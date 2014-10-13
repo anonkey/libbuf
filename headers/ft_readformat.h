@@ -6,7 +6,7 @@
 /*   By: tseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/09/29 19:04:43 by tseguier          #+#    #+#             */
-/*   Updated: 2014/09/29 21:19:42 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/13 12:50:09 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct		s_printf_arg
 
 typedef int			(*t_parsefunc)(t_printf_arg *);
 
-typedef int			(*t_printfunc)(t_printf_arg *, char *format, va_list *);
+typedef int			(*t_printfunc)(t_printf_arg *, char *, va_list *);
 
 typedef struct		s_printfn
 {

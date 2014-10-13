@@ -6,7 +6,7 @@
 /*   By: tseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/01 04:41:25 by tseguier          #+#    #+#             */
-/*   Updated: 2014/08/01 04:41:31 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/01 07:14:59 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@
 # define ABS(a) ((a) > 0 ? (a) : 0 - (a))
 # define MAXORE(a, b) ((a) >= (b) ? (a) : (b))
 # define ISDIV(a, b) (((a) % (b)) == 0 ? TRUE : FALSE)
-# define TRACE(a) (printf("\n %s %s %s\n",__FILE__,__LINE__,(a)))
+# define TRACE(a) printf("\n %s %d %s\n", __FILE__, __LINE__, a)
 
 #endif

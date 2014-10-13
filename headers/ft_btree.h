@@ -17,11 +17,11 @@ typedef struct s_btree	*t_btree;
 
 struct				s_btree
 {
-	int				flag;
-	void			*content;
 	t_btree			fath;
 	t_btree			rson;
 	t_btree			lson;
+	void			*content;
+	int				flag;
 };
 
 t_btree				ft_btreenew(t_btree fath, void *c, int flag);
