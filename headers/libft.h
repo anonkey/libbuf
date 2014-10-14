@@ -6,7 +6,7 @@
 /*   By: tseguier <tseguier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 19:21:16 by tseguier          #+#    #+#             */
-/*   Updated: 2014/10/13 22:01:31 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/14 10:29:28 by garm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define BUFF_SIZE 100000
 # define MAX_LLSIZE 64
 # define MAX_ULLSIZE MAX_LLSIZE
+# define MAX_INTSIZE 12
 # define MAX_DBLSIZE (3 + (DBL_MANT_DIG) - (DBL_MIN_EXP))
 # define RADIX_CHAR '.'
 # define EXPONENT_CHAR 'e'

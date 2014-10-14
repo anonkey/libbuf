@@ -6,21 +6,21 @@
 /*   By: tseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/09/29 20:29:24 by tseguier          #+#    #+#             */
-/*   Updated: 2014/10/13 12:52:47 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/14 11:28:11 by garm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
-int			ft_putnbr_len(long long nbr, int sign, int width, char fill)
+char			*ft_getnbr_len(long long nbr, int sign, int width, char fill)
 {
 	int			size;
-	char		strout[MAX_LLSIZE + 1];
+	static char	strout[MAX_LLSIZE + 1] = {'\0'};
 	char		*act;
 
 	size = 1;
 	act = strout + MAX_LLSIZE;
-	*act-- = '\0';
 	if (nbr < 0 || sign)
 	{
 		sign = nbr < 0 ? '-' : '+';
@@ -34,9 +34,19 @@ int			ft_putnbr_len(long long nbr, int sign, int width, char fill)
 		++size;
 	}
 	*act = '0' + nbr;
+	if (sign && fill != '0')
+		*--act = (char)sign;
 	while (++size <= width)
 		*--act = fill;
-	if (sign)
+	if (sign && fill == '0')
 		*--act = (char)sign;
-	return (ft_putstr(act));
+	return (act);
+}
+
+int			ft_putnbr_len(long long nbr, int sign, int width, char fill)
+{
+	char	*nbstr;
+
+	nbstr = ft_getnbr_len(nbr, sign, width, fill);
+	return (write(1, nbstr, ft_strlen(nbstr)));
 }
