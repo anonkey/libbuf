@@ -6,11 +6,12 @@
 /*   By: tseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/03 14:25:40 by tseguier          #+#    #+#             */
-/*   Updated: 2014/10/03 14:32:22 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/16 21:12:39 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_dynstr.h"
+#include "libft.h"
 
 char		*ft_dynstrflush(t_dynstr dstr)
 {

@@ -6,7 +6,7 @@
 /*   By: tseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/09/29 20:53:29 by tseguier          #+#    #+#             */
-/*   Updated: 2014/10/15 23:31:27 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/16 19:37:53 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void				fillres(long double nb, t_format fmt, char *out)
 	digit = (char)(nb / mask);
 	nb -= mask * (long double)digit;
 	mask /= 10.0;
-	out[size++] += digit + '0';
+	out[size++] = digit + '0';
 	if (fmt->prec > 0)
 		size += ft_printradix(nb, fmt->prec, mask, out + size);
 	out[size++] = 'e';
@@ -84,6 +84,8 @@ int			ft_putldouble_sci_f(long double nb, t_format fmt)
 	fillres(nb, fmt, output);
 	if (fmt->output)
 		return (ft_strlen(output));
+	else if (fmt->allocout)
+		return (ft_dynstradd(fmt->allocout, output));
 	else
 		return (write(fmt->fd, output, ft_strlen(output)));
 }

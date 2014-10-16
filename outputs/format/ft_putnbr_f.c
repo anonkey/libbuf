@@ -6,7 +6,7 @@
 /*   By: tseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/09/29 20:29:24 by tseguier          #+#    #+#             */
-/*   Updated: 2014/10/16 03:18:50 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/16 19:39:59 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ int			ft_putnbr_f(long long nbr, t_format fmt)
 	else
 		sign = fmt->flags & FORMATF_SIGN ? '+' : '\0';
 	nbstr = ft_getnbr_len(nbr, sign, fmt->width, fill);
-	if (!fmt->output)
-		return (write(fmt->fd, nbstr, ft_strlen(nbstr)));
-	return (ft_strlen(ft_strcpy(fmt->output, nbstr)));
+	if (fmt->output)
+		return (ft_strlen(ft_strcat(fmt->output, nbstr)));
+	else if (fmt->allocout)
+		return (ft_dynstradd(fmt->allocout, nbstr));
+	return (write(fmt->fd, nbstr, ft_strlen(nbstr)));
 }
 
 int			ft_putssize_f(long long nbr, t_format fmt)
@@ -47,7 +49,9 @@ int			ft_putssize_f(long long nbr, t_format fmt)
 		*--nbstr = '0';
 	while (len++ <= fmt->width)
 		*--nbstr = ' ';
-	if (!fmt->output)
-		return (write(fmt->fd, nbstr, ft_strlen(nbstr)));
-	return (ft_strlen(ft_strcpy(fmt->output, nbstr)));
+	if (fmt->output)
+		return (ft_strlen(ft_strcat(fmt->output, nbstr)));
+	else if (fmt->allocout)
+		return (ft_dynstradd(fmt->allocout, nbstr));
+	return (write(fmt->fd, nbstr, ft_strlen(nbstr)));
 }

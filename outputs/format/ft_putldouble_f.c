@@ -6,7 +6,7 @@
 /*   By: tseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/09/29 20:53:47 by tseguier          #+#    #+#             */
-/*   Updated: 2014/10/15 23:30:59 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/16 19:37:40 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int			ft_putldouble_f(long double nb, t_format fmt)
 	fillres(nb, fmt, output);
 	if (fmt->output)
 		return (ft_strlen(output));
+	else if (fmt->allocout)
+		return (ft_dynstradd(fmt->allocout, output));
 	else
-		return (write(1, output, fmt->fd));
+		return (write(fmt->fd, output, ft_strlen(output)));
 }

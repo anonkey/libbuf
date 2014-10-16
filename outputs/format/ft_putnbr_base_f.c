@@ -6,7 +6,7 @@
 /*   By: tseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/07/10 11:28:40 by tseguier          #+#    #+#             */
-/*   Updated: 2014/10/16 03:10:52 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/16 19:39:02 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int			ft_putnbr_base_f(unsigned long long nbr, char *base, t_format fmt)
 			ft_strncpy((res -= 2), "0x", 2);
 	if (fmt->output)
 		return (ft_strlen(ft_strcpy(fmt->output, res)));
+	else if (fmt->allocout)
+		return (ft_dynstradd(fmt->allocout, res));
 	return (write(fmt->fd, res, ft_strlen(res)));
 }
 
@@ -72,5 +74,7 @@ int			ft_putsize_base_f(unsigned long long nbr, char *base, t_format fmt)
 		*--res = ' ';
 	if (fmt->output)
 		return (ft_strlen(ft_strcpy(fmt->output, res)));
+	else if (fmt->allocout)
+		return (ft_dynstradd(fmt->allocout, res));
 	return (write(fmt->fd, res, ft_strlen(res)));
 }

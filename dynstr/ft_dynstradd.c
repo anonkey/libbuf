@@ -6,11 +6,12 @@
 /*   By: tseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/03 14:23:38 by tseguier          #+#    #+#             */
-/*   Updated: 2014/10/13 12:48:16 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/16 21:19:38 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_dynstr.h"
+#include "libft.h"
 
 static int		ft_dynstr_extend(t_dynstr dstr, unsigned long size)
 {
@@ -50,6 +51,32 @@ int				ft_dynstradd(t_dynstr dstr, char *str)
 			return (-1);
 	}
 	ft_strcpy((char *)(dstr->bufflist->tail->content + dstr->offset), str);
+	dstr->offset += size;
+	dstr->size += size;
+	return (0);
+}
+
+int				ft_dynstradd_len(t_dynstr dstr, char *str, size_t size)
+{
+	unsigned long	freebytes;
+
+	if (!(ft_ldcdsize(dstr->bufflist))
+		|| dstr->bufflist->tail->content_size - dstr->offset - 1 < size)
+	{
+		if (dstr->bufflist->tail)
+		{
+			freebytes = dstr->bufflist->tail->content_size - dstr->offset;
+			ft_strncpy((char *)(dstr->bufflist->tail->content + dstr->offset),
+						str, freebytes);
+			size -= freebytes;
+			str += freebytes;
+			dstr->size += freebytes;
+		}
+		if (-1 == ft_dynstr_extend(dstr, size))
+			return (-1);
+	}
+	ft_strncpy((char *)(dstr->bufflist->tail->content + dstr->offset),
+				str, size);
 	dstr->offset += size;
 	dstr->size += size;
 	return (0);

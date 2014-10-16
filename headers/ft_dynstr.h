@@ -6,13 +6,13 @@
 /*   By: tseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/03 14:28:39 by tseguier          #+#    #+#             */
-/*   Updated: 2014/10/13 22:00:15 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/16 21:21:08 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_DYNSTR_H
 # define FT_DYNSTR_H
-# include "libft.h"
+# include "libft_struct.h"
 
 typedef struct			s_dynstr
 {
@@ -25,6 +25,8 @@ typedef struct			s_dynstr
 typedef t_sdynstr		*t_dynstr;
 
 int						ft_dynstradd(t_dynstr dstr, char *str);
+
+int						ft_dynstradd_len(t_dynstr dstr, char *str, size_t size);
 
 void					ft_dynstrdel(t_dynstr *dstr_p);
 

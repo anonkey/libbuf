@@ -6,11 +6,12 @@
 /*   By: tseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/03 14:21:54 by tseguier          #+#    #+#             */
-/*   Updated: 2014/10/03 14:32:36 by tseguier         ###   ########.fr       */
+/*   Updated: 2014/10/16 21:13:00 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_dynstr.h"
+#include "libft.h"
 
 t_dynstr	ft_dynstrnew(unsigned long inc)
 {
