@@ -6,7 +6,7 @@
 /*   By: tseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/09/29 20:29:24 by tseguier          #+#    #+#             */
-/*   Updated: 2014/10/14 11:28:11 by garm             ###   ########.fr       */
+/*   Updated: 2014/10/14 15:09:42 by garm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ char			*ft_getnbr_len(long long nbr, int sign, int width, char fill)
 	act = strout + MAX_LLSIZE;
 	if (nbr < 0 || sign)
 	{
-		sign = nbr < 0 ? '-' : '+';
+		if (sign == ' ')
+			sign = nbr < 0 ? '-' : ' ';
+		else
+			sign = nbr < 0 ? '-' : '+';
 		++size;
 		nbr = nbr > 0 ? nbr : 0 - nbr;
 	}

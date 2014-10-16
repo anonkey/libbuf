@@ -6,7 +6,7 @@
 /*   By: tseguier <tseguier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 19:21:16 by tseguier          #+#    #+#             */
-/*   Updated: 2014/10/14 10:29:28 by garm             ###   ########.fr       */
+/*   Updated: 2014/10/16 03:04:36 by tseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 # include <stdlib.h>
 # include <float.h>
 # include "ft_ldcd_cell.h"
+# include "t_format.h"
 # include "ft_btree.h"
 # include "libft_struct.h"
 # include "ft_dynstr.h"
 # define BUFF_SIZE 100000
 # define MAX_LLSIZE 64
 # define MAX_ULLSIZE MAX_LLSIZE
+# define MAX_ULL_BIN_SIZE 64
 # define MAX_INTSIZE 12
-# define MAX_DBLSIZE (3 + (DBL_MANT_DIG) - (DBL_MIN_EXP))
+# define MAX_DBLSIZE (8 + (DBL_MANT_DIG))
 # define RADIX_CHAR '.'
 # define EXPONENT_CHAR 'e'
 
@@ -54,6 +56,25 @@ int			ft_putldouble(long double nb, int prec, int sign);
 int			ft_putdouble_sci(double nb, int prec);
 int			ft_putldouble_sci(long double nb, int prec);
 int			ft_putldcd(t_ldcd ldcd, int (*put)(void *));
+char		*ft_getnbr(int n);
+char		*ft_getnbr_len(long long nbr, int sign, int width, char fill);
+char		*ft_getnbr_ll(long long nbr, int sign, char *strout);
+char		*ft_getnbr_ulen(unsigned long long nbr, int width, char fill);
+/*
+** Formatted Outputs
+*/
+int			ft_putldouble_f(long double nb, t_format fmt);
+int			ft_putldouble_sci_f(long double nb, t_format fmt);
+char		*ft_getnbr_base(unsigned long long nb, char *base,
+							unsigned int baselen);
+int			ft_putnbr_base_f(unsigned long long nbr, char *base, t_format fmt);
+int			ft_putnbr_f(long long nbr, t_format fmt);
+char		*ft_getnbr_ull_len(unsigned long long nbr, int width, char fill);
+int			ft_putnbr_ull_f(unsigned long long nbr, t_format fmt);
+int			ft_putstr_f(char const *s, t_format fmt);
+int			ft_putsize_base_f(unsigned long long nbr, char *base, t_format fmt);
+int			ft_putssize_f(long long nbr, t_format fmt);
+int			ft_putsize_f(unsigned long long nbr, t_format fmt);
 
 /*
 ** Memory
